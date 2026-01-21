@@ -874,9 +874,9 @@ compatibility_old_binary() {
     get_latest_version
 
     if [ "$DOWNLOAD_TOOL" = "curl" ]; then
-      curl -sL "${GH_PROXY}https://github.com/AliceLovesGit/nodepass-apt/releases/download/${LTS_LATEST_VERSION}/nodepass-apt_${LTS_VERSION_NUM}_linux_${ARCH}.tar.gz" | tar -xz -C "$TEMP_DIR"
+      curl -sL "${GH_PROXY}https://github.com/AliceLovesGit/nodepass/releases/download/${LTS_LATEST_VERSION}/nodepass-apt_${LTS_VERSION_NUM}_linux_${ARCH}.tar.gz" | tar -xz -C "$TEMP_DIR"
     else
-      wget "${GH_PROXY}https://github.com/AliceLovesGit/nodepass-apt/releases/download/${LTS_LATEST_VERSION}/nodepass-apt_${LTS_VERSION_NUM}_linux_${ARCH}.tar.gz" -qO- | tar -xz -C "$TEMP_DIR"
+      wget "${GH_PROXY}https://github.com/AliceLovesGit/nodepass/releases/download/${LTS_LATEST_VERSION}/nodepass-apt_${LTS_VERSION_NUM}_linux_${ARCH}.tar.gz" -qO- | tar -xz -C "$TEMP_DIR"
     fi
 
     [ -s "$TEMP_DIR/nodepass-apt" ] && mv "$TEMP_DIR/nodepass-apt" "$WORK_DIR/np-lts" && chmod +x "$WORK_DIR/np-lts"
@@ -985,7 +985,7 @@ upgrade_nodepass() {
 
     # 下载开发版
     if [ "$HAS_DEV_UPGRADE" = 1 ]; then
-      curl -sL "${GH_PROXY}https://github.com/AliceLovesGit/nodepass-core/releases/download/${DEV_LATEST_VERSION}/nodepass-core_${DEV_VERSION_NUM}_linux_${ARCH}.tar.gz" | tar -xz -C "$TEMP_DIR"
+      curl -sL "${GH_PROXY}https://github.com/AliceLovesGit/nodepass/releases/download/${DEV_LATEST_VERSION}/nodepass-core_${DEV_VERSION_NUM}_linux_${ARCH}.tar.gz" | tar -xz -C "$TEMP_DIR"
       if [ -f "$TEMP_DIR/nodepass-core" ]; then
         mv "$TEMP_DIR/nodepass-core" "$WORK_DIR/np-dev"
         chmod +x "$WORK_DIR/np-dev"
@@ -996,7 +996,7 @@ upgrade_nodepass() {
 
     # 下载经典版(LTS)
     if [ "$HAS_LTS_UPGRADE" = 1 ]; then
-      curl -sL "${GH_PROXY}https://github.com/AliceLovesGit/nodepass-apt/releases/download/${LTS_LATEST_VERSION}/nodepass-apt_${LTS_VERSION_NUM}_linux_${ARCH}.tar.gz" | tar -xz -C "$TEMP_DIR"
+      curl -sL "${GH_PROXY}https://github.com/AliceLovesGit/nodepass/releases/download/${LTS_LATEST_VERSION}/nodepass-apt_${LTS_VERSION_NUM}_linux_${ARCH}.tar.gz" | tar -xz -C "$TEMP_DIR"
       if [ -f "$TEMP_DIR/nodepass-apt" ]; then
         mv "$TEMP_DIR/nodepass-apt" "$WORK_DIR/np-lts"
         chmod +x "$WORK_DIR/np-lts"
@@ -1018,7 +1018,7 @@ upgrade_nodepass() {
 
     # 下载开发版
     if [ "$HAS_DEV_UPGRADE" = 1 ]; then
-      wget "${GH_PROXY}https://github.com/AliceLovesGit/nodepass-core/releases/download/${DEV_LATEST_VERSION}/nodepass-core_${DEV_VERSION_NUM}_linux_${ARCH}.tar.gz" -qO- | tar -xz -C "$TEMP_DIR"
+      wget "${GH_PROXY}https://github.com/AliceLovesGit/nodepass/releases/download/${DEV_LATEST_VERSION}/nodepass-core_${DEV_VERSION_NUM}_linux_${ARCH}.tar.gz" -qO- | tar -xz -C "$TEMP_DIR"
       if [ -f "$TEMP_DIR/nodepass-core" ]; then
         mv "$TEMP_DIR/nodepass-core" "$WORK_DIR/np-dev"
         chmod +x "$WORK_DIR/np-dev"
@@ -1029,7 +1029,7 @@ upgrade_nodepass() {
 
     # 下载经典版(LTS)
     if [ "$HAS_LTS_UPGRADE" = 1 ]; then
-      wget "${GH_PROXY}https://github.com/AliceLovesGit/nodepass-apt/releases/download/${LTS_LATEST_VERSION}/nodepass-apt_${LTS_VERSION_NUM}_linux_${ARCH}.tar.gz" -qO- | tar -xz -C "$TEMP_DIR"
+      wget "${GH_PROXY}https://github.com/AliceLovesGit/nodepass/releases/download/${LTS_LATEST_VERSION}/nodepass-apt_${LTS_VERSION_NUM}_linux_${ARCH}.tar.gz" -qO- | tar -xz -C "$TEMP_DIR"
       if [ -f "$TEMP_DIR/nodepass-apt" ]; then
         mv "$TEMP_DIR/nodepass-apt" "$WORK_DIR/np-lts"
         chmod +x "$WORK_DIR/np-lts"
@@ -1255,14 +1255,14 @@ install() {
 
   # 后台下载 NodePass 和 qrencode（60秒超时，重试2次）
   if [ "$DOWNLOAD_TOOL" = "curl" ]; then
-    { curl --connect-timeout 60 --max-time 60 --retry 2 -sL "${GH_PROXY}https://github.com/AliceLovesGit/nodepass-core/releases/download/${DEV_LATEST_VERSION}/nodepass-core_${DEV_VERSION_NUM}_linux_${ARCH}.tar.gz" | tar -xz -C "$TEMP_DIR"; } &
+    { curl --connect-timeout 60 --max-time 60 --retry 2 -sL "${GH_PROXY}https://github.com/AliceLovesGit/nodepass/releases/download/${DEV_LATEST_VERSION}/nodepass-core_${DEV_VERSION_NUM}_linux_${ARCH}.tar.gz" | tar -xz -C "$TEMP_DIR"; } &
     { curl --connect-timeout 60 --max-time 60 --retry 2 -sL "${GH_PROXY}https://github.com/AliceLovesGit/nodepass/releases/download/${STABLE_LATEST_VERSION}/nodepass_${STABLE_VERSION_NUM}_linux_${ARCH}.tar.gz" | tar -xz -C "$TEMP_DIR"; } &
-    { curl --connect-timeout 60 --max-time 60 --retry 2 -sL "${GH_PROXY}https://github.com/AliceLovesGit/nodepass-apt/releases/download/${LTS_LATEST_VERSION}/nodepass-apt_${LTS_VERSION_NUM}_linux_${ARCH}.tar.gz" | tar -xz -C "$TEMP_DIR"; } &
+    { curl --connect-timeout 60 --max-time 60 --retry 2 -sL "${GH_PROXY}https://github.com/AliceLovesGit/nodepass/releases/download/${LTS_LATEST_VERSION}/nodepass-apt_${LTS_VERSION_NUM}_linux_${ARCH}.tar.gz" | tar -xz -C "$TEMP_DIR"; } &
     { curl --connect-timeout 60 --max-time 60 --retry 2 -o "$TEMP_DIR/qrencode" "${GH_PROXY}https://github.com/fscarmen/client_template/raw/main/qrencode-go/qrencode-go-linux-$ARCH" >/dev/null 2>&1 && chmod +x "$TEMP_DIR/qrencode" >/dev/null 2>&1; } &
   else
-    { wget --timeout=60 --tries=2 "${GH_PROXY}https://github.com/AliceLovesGit/nodepass-core/releases/download/${DEV_LATEST_VERSION}/nodepass-core_${DEV_VERSION_NUM}_linux_${ARCH}.tar.gz" -qO- | tar -xz -C "$TEMP_DIR"; } &
+    { wget --timeout=60 --tries=2 "${GH_PROXY}https://github.com/AliceLovesGit/nodepass/releases/download/${DEV_LATEST_VERSION}/nodepass-core_${DEV_VERSION_NUM}_linux_${ARCH}.tar.gz" -qO- | tar -xz -C "$TEMP_DIR"; } &
     { wget --timeout=60 --tries=2 "${GH_PROXY}https://github.com/AliceLovesGit/nodepass/releases/download/${STABLE_LATEST_VERSION}/nodepass_${STABLE_VERSION_NUM}_linux_${ARCH}.tar.gz" -qO- | tar -xz -C "$TEMP_DIR"; } &
-    { wget --timeout=60 --tries=2 "${GH_PROXY}https://github.com/AliceLovesGit/nodepass-apt/releases/download/${LTS_LATEST_VERSION}/nodepass-apt_${LTS_VERSION_NUM}_linux_${ARCH}.tar.gz" -qO- | tar -xz -C "$TEMP_DIR"; } &
+    { wget --timeout=60 --tries=2 "${GH_PROXY}https://github.com/AliceLovesGit/nodepass/releases/download/${LTS_LATEST_VERSION}/nodepass-apt_${LTS_VERSION_NUM}_linux_${ARCH}.tar.gz" -qO- | tar -xz -C "$TEMP_DIR"; } &
     { wget --no-check-certificate --timeout=60 --tries=2 --continue -qO "$TEMP_DIR/qrencode" "${GH_PROXY}https://github.com/fscarmen/client_template/raw/main/qrencode-go/qrencode-go-linux-$ARCH" >/dev/null 2>&1 && chmod +x "$TEMP_DIR/qrencode" >/dev/null 2>&1; } &
   fi
   rm -f $TEMP_DIR/{README.md,README_zh.md,LICENSE}
