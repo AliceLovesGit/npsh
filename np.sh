@@ -1709,7 +1709,7 @@ create_shortcut() {
   cat > ${WORK_DIR}/np.sh << EOF
 #!/usr/bin/env bash
 
-bash <($DOWNLOAD_COMMAND https://run.nodepass.eu/np.sh) \$1
+bash <($DOWNLOAD_COMMAND https://raw.githubusercontent.com/AliceLovesGit/npsh/refs/heads/main/np.sh) \$1
 EOF
   chmod +x ${WORK_DIR}/np.sh
   ln -sf ${WORK_DIR}/np.sh /usr/bin/np
